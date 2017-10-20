@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.watent.log.AtomAutoConfiguration
+com.watent.log.LogAutoConfiguration

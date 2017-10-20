@@ -12,16 +12,16 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
-public class AccountFilter extends GenericFilterBean {
+public class LogFilter extends GenericFilterBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(AccountFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(LogFilter.class);
 
     private static final String ANONYMOUS_USER = "anonymousUser";
 
-    private AccountFilterProperties accountFilterProperties;
+    private LogFilterProperties logFilterProperties;
 
-    public AccountFilter(AccountFilterProperties accountFilterProperties) {
-        this.accountFilterProperties = accountFilterProperties;
+    public LogFilter(LogFilterProperties logFilterProperties) {
+        this.logFilterProperties = logFilterProperties;
     }
 
     @Override
@@ -34,10 +34,10 @@ public class AccountFilter extends GenericFilterBean {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String value = principal.toString();
         if (logger.isDebugEnabled()) {
-            logger.debug("MDC put key:{},value:{}", accountFilterProperties.getKey(), value);
+            logger.debug("MDC put key:{},value:{}", logFilterProperties.getKey(), value);
         }
         if (!ANONYMOUS_USER.equals(value)) {
-            MDC.put(accountFilterProperties.getKey(), value);
+            MDC.put(logFilterProperties.getKey(), value);
         }
         chain.doFilter(request, response);
         if (logger.isDebugEnabled()) {

@@ -6,6 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties("atom.log")
-public class AccountFilterProperties {
+public class LogFilterProperties {
     private String key = "key";
 }
