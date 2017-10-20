@@ -28,7 +28,12 @@ atom-log-boot-starter
     
     </configuration>
 
+## app WebSecurityConfigurerAdapter 
     
+    @Resource
+    private LogFilter logFilter;
+    
+    http.addFilterAfter(logFilter, FilterSecurityInterceptor.class);
     
     
     
